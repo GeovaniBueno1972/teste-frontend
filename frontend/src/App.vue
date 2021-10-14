@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
-		<Header title="Gerenciamento de Produção"/>
+		<Header title="Gerenciamento de Produção"
+		:hideUserDropdown="true"/>
 		<Content />
 		<Footer />
 	</div>
