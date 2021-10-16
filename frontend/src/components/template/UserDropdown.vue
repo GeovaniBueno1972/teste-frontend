@@ -4,8 +4,8 @@
             <span class="d-nome">{{user.name}}</span>
         </div>
         <div class="user-dropdown-content">
-            <a href="">Administração</a>
-            <a href="">Sair</a>
+            <router-link to="/admin"> Administração </router-link>
+            <router-link to="/">Sair</router-link>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
 .user-dropdown{
     position: relative;
     height: 100%;
-    padding-top: 60px;
+    padding-top: 20px;
 }
 .user-button{
     display: flex;

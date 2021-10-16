@@ -1,7 +1,7 @@
 <template>
   <header class="header">
       <h1 class="title">
-          {{ title }}
+         <router-link to='/'> {{ title }}</router-link>
       </h1>
       <UserDropdown v-if="!hideUserDropdown" />
   </header>
