@@ -5,17 +5,25 @@
         </div>
         <div class="user-dropdown-content">
             <router-link to="/admin"> Administração </router-link>
-            <router-link to="/">Sair</router-link>
+            <a href @click.prevent="logout">Sair</a>
         </div>
     </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
+import {chave} from '@/global'
 
 export default {
     name: 'UserDropdown',
-    computed: mapState(['user'])
+    computed: mapState(['user']),
+    methods: {
+        logout(){
+            localStorage.removeItem(chave)
+            this.$store.commit('setUser', null)
+            this.$router.push({name: 'auth'})
+        }
+    }
 }
 </script>
 

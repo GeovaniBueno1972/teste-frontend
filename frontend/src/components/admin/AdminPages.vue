@@ -13,7 +13,7 @@
                     <b-tab title="Produtos">
                         <ProdutosAdmin />
                     </b-tab>
-                    <b-tab title="Usuários">
+                    <b-tab v-if="user.funcao === 'administracao'" title="Usuários">
                         <UsuarioAdmin />
                     </b-tab>
 
@@ -29,10 +29,12 @@ import PedidosAdmin from './PedidosAdmin.vue'
 import ClientesAdmin from './ClientesAdmin.vue'
 import ProdutosAdmin from './ProdutosAdmin.vue'
 import UsuarioAdmin from './UsuarioAdmin.vue'
+import {mapState} from 'vuex'
 
 export default {
     name: 'AdminPages',
-    components: { PageTitle, PedidosAdmin, ClientesAdmin, ProdutosAdmin, UsuarioAdmin }
+    components: { PageTitle, PedidosAdmin, ClientesAdmin, ProdutosAdmin, UsuarioAdmin },
+    computed: mapState(['user'])
 }
 </script>
 

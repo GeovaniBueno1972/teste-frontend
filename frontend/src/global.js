@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+export const chave = '__usuario'
 export const baseApiUrl = 'https://teste-backend-gb.herokuapp.com'
 
 export function showError(e){
@@ -11,3 +12,5 @@ export function showError(e){
         Vue.toasted.global.defaultError()
     }
 }
+
+export default { baseApiUrl, showError, chave}

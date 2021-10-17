@@ -1,20 +1,27 @@
 <template>
   <div class="clientes-admin">
       <b-form>
-          <input id="produto-id" type="hidden" v-model="produto.id">
+          <input id="cliente-id" type="hidden" v-model="cliente.id">
           <b-row>
-              <b-col md="3" sm="12">
-                  <b-form-group label="Código:" label-for="produto-codigo">
-                      <b-form-input id="produto-codigo" type="text"
-                        v-model="produto.codigo" required
-                        placeholder="Informe o Código do Produto..." />
+              <b-col md="5" sm="12">
+                  <b-form-group label="Nome:" label-for="cliente-nome">
+                      <b-form-input id="cliente-nome" type="text"
+                        v-model="cliente.name" required
+                        placeholder="Informe o Nome do Cliente..." />
                   </b-form-group>
               </b-col>
-              <b-col md="9" sm="12">
-                  <b-form-group label="Nome:" label-for="Cliente-nome">
-                      <b-form-input id="produto-nome" type="text"
-                        v-model="produto.name" required
-                        placeholder="Informe Nome do Produto..." />
+              <b-col md="2" sm="12">
+                  <b-form-group label="Fone:" label-for="Cliente-fone">
+                      <b-form-input id="cliente-fome" type="text"
+                        v-model="cliente.fone" required
+                        placeholder="Fone do Cliente..." />
+                  </b-form-group>
+              </b-col>
+              <b-col md="5" sm="12">
+                  <b-form-group label="Bairro:" label-for="cliente-bairro">
+                      <b-form-input id="cliente-fone" type="text"
+                        v-model="cliente.bairro" required
+                        placeholder="Informe o Bairro do Cliente..." />
                   </b-form-group>
               </b-col>
           </b-row>
@@ -26,12 +33,12 @@
           <b-button class="ml-2" @click="reset">Cancelar</b-button>
       </b-form>
       <hr>
-      <b-table hover small striped :items="produtos" :fields="fields">
+      <b-table hover small striped :items="clientes" :fields="fields">
           <template slot="actions" slot-scope="data"> 
-              <b-button variant="warning" @click="loadProduto(data.item)" class="mr-2">
+              <b-button variant="warning" @click="loadCliente(data.item)" class="mr-2">
                   <i class="fa fa-pencil"></i>
               </b-button>
-              <b-button variant="danger" @click="loadProduto(data.item, 'remove')">
+              <b-button variant="danger" @click="loadCliente(data.item, 'remove')">
                   <i class="fa fa-trash"></i>
               </b-button>
           </template>
@@ -49,8 +56,8 @@ export default {
     data: function(){
         return {
             mode: 'save',
-            Cliente: {},
-            Clientes: [],
+            cliente: {},
+            clientes: [],
             fields: [
                 {key: 'id', label: 'Código', sortable: true},
                 {key: 'name', label: 'Nome', sortable: true},
@@ -70,7 +77,7 @@ export default {
         reset(){
             this.mode = 'save'
             this.cliente = {}
-            this.loadUsers()
+            this.loadClientes()
         },
         save(){
             const method = this.cliente.id ? 'put' : 'post'
@@ -92,7 +99,7 @@ export default {
                 })
                 .catch(showError)
         },
-        loadUser(cliente, mode = 'save'){
+        loadCliente(cliente, mode = 'save'){
             this.mode = mode
             this.cliente = {...cliente}
         }

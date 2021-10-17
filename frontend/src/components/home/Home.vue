@@ -10,19 +10,24 @@ import Stat from './Stat.vue'
 import axios from 'axios'
 import { baseApiUrl } from '@/global'
 
+
 export default {
     name: 'Home',
     components: {PageTitle, Stat},
+    
     data: function () {
       return {
+        user : this.user,
         stat: {}
       }
     },
     methods: {
       getStats(){
         axios.get(`${baseApiUrl}/stats`).then(res => this.stat = res.data)
-      }
-    }
+    },
+      
+  }
+    
 }
 </script>
 
